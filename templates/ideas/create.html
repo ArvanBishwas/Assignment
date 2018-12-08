@@ -1,0 +1,36 @@
+{% extends 'idea_hunt/base.html'%}
+
+
+{% block content %}
+    <br/>
+    <div class="content-section">
+    <h1>Add Post</h1>
+    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+                    <fieldset class="form-group">
+            <legend class="border-bottom mb-4"></legend>
+        Title:
+        <br />
+        <input class="form-control form-control-lg" type="text" name="title" placeholder="Title">
+        <br />
+        Body:
+        <br />
+        <textarea class="form-control form-control-lg" type="text" class="col-12" name="body" placeholder="Write Hare Your Post Information"></textarea>
+        <br />
+        Icon:
+        <br />
+        <input type="file" name="icon" />
+        <br />
+        <br/>
+        Image:
+        <br />
+        <input type="file" name="image" />
+        <br/>
+        <br />
+        <br />
+    <button type="submit" class="btn btn-primary">Post</button>
+                    </fieldset>
+    </form>
+    </div>
+
+{% endblock %}

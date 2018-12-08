@@ -1,0 +1,19 @@
+{% extends 'idea_hunt/base.html' %}
+
+{% block content %}
+    {% for idea in ideas.all %}
+        <br/>
+        <article class="media content-section">
+          <img style="width: 150px;" src="{{ idea.icon.url }}">
+          <div class="media-body" style="padding-left:10px;">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ idea.hunter.username }}</a>
+              <small class="text-muted">{{ idea.pub_date_pretty }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'detail' idea.id %}">{{ idea.title }}</a></h2>
+            <p class="article-content" onclick="window.location='{% url 'detail' idea.id %}';" style="cursor: pointer" >{{ idea.summary }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock %}
+

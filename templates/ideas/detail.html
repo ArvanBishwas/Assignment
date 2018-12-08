@@ -1,0 +1,48 @@
+{% extends 'idea_hunt/base.html'%}
+
+{% block content %}
+<br/>
+<div class="row">
+    <div class="col-2">
+        <img src="{{ idea.icon.url }}" class="img-fluid" />
+    </div>
+    <div class="col-3">
+        <h2>{{ idea.title }}</h2>
+    </div>
+</div>
+    <br/>
+
+
+<div class="row">
+    <div class="col-7" style="width: 40px;">
+        <img src="{{ idea.image.url }}" class="img-fluid" />
+    </div>
+    <div class="col-4">
+        <a href="javascript:{document.getElementById('upvote').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-caret-top"></span> Upvote {{ idea.votes_total }}</button></a>
+    </div>
+
+</div>
+
+<div class="row pt-3">
+    <div class="col-4">
+        <h4><span class="oi oi-magnifying-glass"></span> Hunted by {{ idea.hunter.username }}</h4>
+    </div>
+    <div class="col-4 text-right">
+        <h4><span class="oi oi-clock"></span> {{ idea.pub_date_pretty }}</h4>
+    </div>
+</div>
+    <hr />
+
+<div class="row">
+    <div class="col-8">
+        <p>{{ idea.body }}</p>
+    </div>
+
+</div>
+
+<form id="upvote" method="POST" action="{% url 'upvote' idea.id %}">
+    {% csrf_token %}
+    <input type="hidden" />
+</form>
+
+{% endblock %}
